@@ -3,6 +3,15 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## The effect each of the P, I, D components had in your implementation.
+* The P(Kp) is proportional to the CTE, only apply this control will make the vehicle always oscillates and out of track while turning.
+* The I(Ki) is proportional to the sum of previous CTE, it should be able to cancel out steering drift which seems not a big deal in this project.
+* The D(Kd) is proportional to the difference of CTE, it will make the vehicle more stable and also make the vehicle get a better performance when turning.
+
+## How the final hyperparameters were chosen.
+* I start with Kp and set both of Kd, Ki to 0. I can only make the vehicle pass the first turn. Then I start to add Kd to make the vehicle smooth. After that I tried to set Ki and it seems it makes the vehicle oscillates more. I decided to keep it to 0 finally.
+* I do want to apply twiddle to this project, but I don't know how to do it dynamically.
+
 ## Dependencies
 
 * cmake >= 3.5
@@ -19,7 +28,7 @@ Self-Driving Car Engineer Nanodegree Program
   * Run either `./install-mac.sh` or `./install-ubuntu.sh`.
   * If you install from source, checkout to commit `e94b6e1`, i.e.
     ```
-    git clone https://github.com/uWebSockets/uWebSockets 
+    git clone https://github.com/uWebSockets/uWebSockets
     cd uWebSockets
     git checkout e94b6e1
     ```
@@ -33,7 +42,7 @@ There's an experimental patch for windows in this [PR](https://github.com/udacit
 1. Clone this repo.
 2. Make a build directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
-4. Run it: `./pid`. 
+4. Run it: `./pid`.
 
 Tips for setting up your environment can be found [here](https://classroom.udacity.com/nanodegrees/nd013/parts/40f38239-66b6-46ec-ae68-03afd8a601c8/modules/0949fca6-b379-42af-a919-ee50aa304e6a/lessons/f758c44c-5e40-4e01-93b5-1a82aa4e044f/concepts/23d376c7-0195-4276-bdf0-e02f1f3c665d)
 
